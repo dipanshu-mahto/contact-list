@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+         <%= locals.title %>
+        </title>
+
+        <link rel="stylesheet" href="/css/csss.css">
+        <script src="https://kit.fontawesome.com/2374bf0050.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h2 id="page-heading">
+            <i class="fa-solid fa-address-book"></i>
+            Contact List</h2>
+<div id="contact-list-container">
+        <ul>
+           <% for (let i of contact_list){ %>
+            <li class="contacts"> 
+                <div class="details">
+                <p><%= i.name %></p>
+                <p><%= i.phone %></p>
+            </div>
+            <div class="delete-button">
+                <a href="/delete-contact/?id=<%= i._id %>&name=<%=i.name %>">
+                    <i class="fa-solid fa-square-xmark"></i>
+                </a>
+            </div>
+            <a href="/search/?name=<%= i.name %>&name=<%=i.name %>">
+                </a>
+            </li>  
+            <% } %>
+        </ul>
+        </div>
+
+       
+
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter Name">
+         <br>   <input type="number" name="phone" placeholder="Enter Number" value="" min="100000000" max="9999999999" /><br>
+         <input type="submit" value="submit"/>
+            <button type="submit" > Add  </button>
+           </form>
+           <form action="/search" method="get">
+           
+            <br>   <input type="text" name="name" placeholder="Enter Name" /><br>
+        
+            <button type="submit" > Find </button>
+        </form>
+        <script type="text/javascript" src="/js/jss.js"></script>
+    </body>
+    
+    
+</html>
